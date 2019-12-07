@@ -1,0 +1,608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{36FC7636-82D4-4714-81C7-9235D28A7D85}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>SIMRSGizi.My.MyApplication</StartupObject>
+    <RootNamespace>SIMRSGizi</RootNamespace>
+    <AssemblyName>SIMRSGizi</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>SIMRSGizi.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>SIMRSGizi.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Nutri2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>6DFC65012756E13EF4DF33C3C9540C6A0D7C4559</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SIMRSGizi_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdvancedDataGridView, Version=1.1.23013.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AdvancedDataGridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Animator, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SIMRSGizi-Recolor Indicator\SIMRSGizi\bin\Debug\Animator.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoClosingMessageBox, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AutoClosingMessageBox.dll</HintPath>
+    </Reference>
+    <Reference Include="CollapsibleSplitter, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\CollapsibleSplitter.dll</HintPath>
+    </Reference>
+    <Reference Include="DataGridViewExtension, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DataGridViewExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data, Version=5.0.2099.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Test Devart\Old\Devart.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.MySql, Version=8.12.1307.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Test Devart\Old\Devart.Data.MySql.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.35, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.Instrumentation, Version=14.1.0.35, Culture=neutral, PublicKeyToken=f90dc37c26666a67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevComponents.Instrumentation.dll</HintPath>
+    </Reference>
+    <Reference Include="HierarchicalGrid">
+      <HintPath>..\..\HierarchicalGrid\bin\Debug\HierarchicalGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>bin\Debug\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.7.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Office, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>bin\Debug\Office.dll</HintPath>
+    </Reference>
+    <Reference Include="PeinLoginUI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SIMRSGizi-Recolor Indicator\SIMRSGizi\bin\Debug\PeinLoginUI.dll</HintPath>
+    </Reference>
+    <Reference Include="QueryGizi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Pein\bin\Debug\QueryGizi.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking.ThemeVS2015, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomControl\GroupByGrid.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\GroupContractable.Designer.vb">
+      <DependentUpon>GroupContractable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\GroupContractable.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Data Referensi\Editor\frmAllEditor.Designer.vb">
+      <DependentUpon>frmAllEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Data Referensi\Editor\frmAllEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data Referensi\Editor\frmInventarisEditor.Designer.vb">
+      <DependentUpon>frmInventarisEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Data Referensi\Editor\frmInventarisEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data Referensi\frmBahanMakananPenukar.Designer.vb">
+      <DependentUpon>frmBahanMakananPenukar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Data Referensi\frmBahanMakananPenukar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data Referensi\frmDataAhliGizi.Designer.vb">
+      <DependentUpon>frmDataAhliGizi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Data Referensi\frmDataAhliGizi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data Referensi\frmInventaris.Designer.vb">
+      <DependentUpon>frmInventaris.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Data Referensi\frmInventaris.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data Referensi\frmJenisDiet.Designer.vb">
+      <DependentUpon>frmJenisDiet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Data Referensi\frmJenisDiet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data Referensi\frmNutrisiBahanMakanan.Designer.vb">
+      <DependentUpon>frmNutrisiBahanMakanan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Data Referensi\frmNutrisiBahanMakanan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Public\DatagridviewNumUpDown.vb" />
+    <Compile Include="Public\DatagridViewStripeColumn.vb" />
+    <Compile Include="Public\DataGridViewWatermarkColumn.vb" />
+    <Compile Include="Public\FontLoader.vb" />
+    <Compile Include="Public\Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Public\Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Public\FrmChat.Designer.vb">
+      <DependentUpon>FrmChat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Public\FrmChat.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Public\frmLogin.Designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Public\frmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Public\modTimer.vb" />
+    <Compile Include="Public\NativeMethods.vb" />
+    <Compile Include="Public\Ovveride\NotifButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Standar System\frmAKG.Designer.vb">
+      <DependentUpon>frmAKG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Standar System\frmAKG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Standar System\frmEnergiBasal.Designer.vb">
+      <DependentUpon>frmEnergiBasal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Standar System\frmEnergiBasal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Standar System\frmIMT220.Designer.vb">
+      <DependentUpon>frmIMT220.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Standar System\frmIMT220.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Standar System\frmKategoryUmur.Designer.vb">
+      <DependentUpon>frmKategoryUmur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Standar System\frmKategoryUmur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Standar System\frmKecukupanEnergi.Designer.vb">
+      <DependentUpon>frmKecukupanEnergi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Standar System\frmKecukupanEnergi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Standar System\frmKetebalanLemakTubuh.Designer.vb">
+      <DependentUpon>frmKetebalanLemakTubuh.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Standar System\frmKetebalanLemakTubuh.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmDistribusi.designer.vb">
+      <DependentUpon>frmDistribusi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmDistribusi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmRencanaDistribusi.Designer.vb">
+      <DependentUpon>frmRencanaDistribusi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmRencanaDistribusi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmSiklusMenuEditor.Designer.vb">
+      <DependentUpon>frmSiklusMenuEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmSiklusMenuEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmSiklusStruck.Designer.vb">
+      <DependentUpon>frmSiklusStruck.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmSiklusStruck.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StandarMenu\frmSiklusMenu.Designer.vb">
+      <DependentUpon>frmSiklusMenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StandarMenu\frmSiklusMenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Standar System\frmStatusGiziBalita.Designer.vb">
+      <DependentUpon>frmStatusGiziBalita.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Standar System\frmStatusGiziBalita.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Standar System\frmTinggiLutut.Designer.vb">
+      <DependentUpon>frmTinggiLutut.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Standar System\frmTinggiLutut.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Standar System\frmFormulaIMT.Designer.vb">
+      <DependentUpon>frmFormulaIMT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Standar System\frmFormulaIMT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmBahanMakananEditor.Designer.vb">
+      <DependentUpon>frmBahanMakananEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmBahanMakananEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmDietEditor.Designer.vb">
+      <DependentUpon>frmDietEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmDietEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmKomposisiEditor.Designer.vb">
+      <DependentUpon>frmKomposisiEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmKomposisiEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmPermintaanMakananEditor.Designer.vb">
+      <DependentUpon>frmPermintaanMakananEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StandarMenu\Editor\frmPermintaanMakananEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Standar System\frmAKP.Designer.vb">
+      <DependentUpon>frmAKP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Standar System\frmAKP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StandarMenu\frmBahanMakanan.Designer.vb">
+      <DependentUpon>frmBahanMakanan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StandarMenu\frmBahanMakanan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StandarMenu\frmDetailMakanan.Designer.vb">
+      <DependentUpon>frmDetailMakanan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StandarMenu\frmDetailMakanan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StandarMenu\frmMakananOlahanJadi.Designer.vb">
+      <DependentUpon>frmMakananOlahanJadi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StandarMenu\frmMakananOlahanJadi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuUtama.Designer.vb">
+      <DependentUpon>MenuUtama.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MenuUtama.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Public\modNum.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Public\ExtensionMethods.vb" />
+    <Compile Include="StandarMenu\frmDiet.Designer.vb">
+      <DependentUpon>frmDiet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StandarMenu\frmDiet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StandarMenu\frmPelayananGizi.Designer.vb">
+      <DependentUpon>frmPelayananGizi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StandarMenu\frmPelayananGizi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmViewDistribusi.Designer.vb">
+      <DependentUpon>frmViewDistribusi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmViewDistribusi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmViewMakananOlahan.Designer.vb">
+      <DependentUpon>frmViewMakananOlahan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmViewMakananOlahan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmViewPermintaan.Designer.vb">
+      <DependentUpon>FrmViewPermintaan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmViewPermintaan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomControl\GroupContractable.resx">
+      <DependentUpon>GroupContractable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data Referensi\Editor\frmAllEditor.resx">
+      <DependentUpon>frmAllEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data Referensi\Editor\frmInventarisEditor.resx">
+      <DependentUpon>frmInventarisEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data Referensi\frmBahanMakananPenukar.resx">
+      <DependentUpon>frmBahanMakananPenukar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data Referensi\frmDataAhliGizi.resx">
+      <DependentUpon>frmDataAhliGizi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data Referensi\frmInventaris.resx">
+      <DependentUpon>frmInventaris.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data Referensi\frmJenisDiet.resx">
+      <DependentUpon>frmJenisDiet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data Referensi\frmNutrisiBahanMakanan.resx">
+      <DependentUpon>frmNutrisiBahanMakanan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Public\Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Public\FrmChat.resx">
+      <DependentUpon>FrmChat.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Public\frmLogin.resx">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Standar System\frmAKG.resx">
+      <DependentUpon>frmAKG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Standar System\frmAKP.resx">
+      <DependentUpon>frmAKP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Standar System\frmEnergiBasal.resx">
+      <DependentUpon>frmEnergiBasal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Standar System\frmIMT220.resx">
+      <DependentUpon>frmIMT220.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Standar System\frmKategoryUmur.resx">
+      <DependentUpon>frmKategoryUmur.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Standar System\frmKecukupanEnergi.resx">
+      <DependentUpon>frmKecukupanEnergi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Standar System\frmKetebalanLemakTubuh.resx">
+      <DependentUpon>frmKetebalanLemakTubuh.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StandarMenu\Editor\frmDistribusi.resx">
+      <DependentUpon>frmDistribusi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StandarMenu\Editor\frmRencanaDistribusi.resx">
+      <DependentUpon>frmRencanaDistribusi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StandarMenu\Editor\frmSiklusMenuEditor.resx">
+      <DependentUpon>frmSiklusMenuEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StandarMenu\Editor\frmSiklusStruck.resx">
+      <DependentUpon>frmSiklusStruck.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StandarMenu\frmSiklusMenu.resx">
+      <DependentUpon>frmSiklusMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Standar System\frmStatusGiziBalita.resx">
+      <DependentUpon>frmStatusGiziBalita.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Standar System\frmTinggiLutut.resx">
+      <DependentUpon>frmTinggiLutut.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Standar System\frmFormulaIMT.resx">
+      <DependentUpon>frmFormulaIMT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StandarMenu\Editor\frmBahanMakananEditor.resx">
+      <DependentUpon>frmBahanMakananEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StandarMenu\Editor\frmDietEditor.resx">
+      <DependentUpon>frmDietEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StandarMenu\Editor\frmKomposisiEditor.resx">
+      <DependentUpon>frmKomposisiEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StandarMenu\Editor\frmPermintaanMakananEditor.resx">
+      <DependentUpon>frmPermintaanMakananEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StandarMenu\frmBahanMakanan.resx">
+      <DependentUpon>frmBahanMakanan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StandarMenu\frmDetailMakanan.resx">
+      <DependentUpon>frmDetailMakanan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StandarMenu\frmMakananOlahanJadi.resx">
+      <DependentUpon>frmMakananOlahanJadi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuUtama.resx">
+      <DependentUpon>MenuUtama.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StandarMenu\frmDiet.resx">
+      <DependentUpon>frmDiet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StandarMenu\frmPelayananGizi.resx">
+      <DependentUpon>frmPelayananGizi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmViewDistribusi.resx">
+      <DependentUpon>frmViewDistribusi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmViewMakananOlahan.resx">
+      <DependentUpon>frmViewMakananOlahan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmViewPermintaan.resx">
+      <DependentUpon>FrmViewPermintaan.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="SIMRSGizi_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Nutri2.ico" />
+    <None Include="Nutri.ico" />
+    <None Include="packages.config" />
+    <None Include="resources\Raleway-Light.ttf" />
+    <None Include="resources\user.png" />
+    <None Include="resources\Signing.gif" />
+    <None Include="resources\password.png" />
+    <None Include="resources\logo transparan.png" />
+    <None Include="resources\HeaderFar1.png" />
+    <None Include="resources\Capture.PNG" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
