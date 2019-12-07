@@ -739,10 +739,8 @@ Public Class MenuUtama
     End Sub
 #Region "Dependencies"
     Public Sub SQLDependencies()
-
         'Dim commandDeptEmp As MySqlCommand = New MySqlCommand("SELECT t_permintaan.KDPERMINTAAN FROM t_permintaan", connection)
         connectionDevart.LocalFailover = True
-        AddHandler connectionDevart.ConnectionLost, New ConnectionLostEventHandler(AddressOf connection_ConnectionLost)
         connectionDevart.Open()
         Dim cmd As MySqlCommand = New MySqlCommand("SELECT t_permintaan.KDPERMINTAAN FROM t_permintaan", connectionDevart)
         Dim depend As MySqlDependency = New MySqlDependency(cmd, 100)
@@ -750,50 +748,6 @@ Public Class MenuUtama
         AddHandler depend.OnChange, New OnChangeEventHandler(AddressOf dependency_OnChange)
         MySqlDependency.Start(connectionDevart)
 
-    End Sub
-    Public Sub connection_ConnectionLost(ByVal sender As Object, ByVal e As ConnectionLostEventArgs)
-        Console.WriteLine("AttemptNumber: {0}", e.AttemptNumber)
-        If e.Cause = ConnectionLostCause.Connect Then
-            If e.Context = ConnectionLostContext.None Then
-                e.RetryMode = RetryMode.Reexecute
-                Try
-                    If e.AttemptNumber < 1000 Then
-                        e.RetryMode = RetryMode.Reexecute
-                    Else
-                        'e.RetryMode = RetryMode.Raise
-                        'MsgBox("Gagal terhubung dengan server")
-                        attemptGUI += 1
-                        If attemptGUI > 3 Then
-                            Dim p = AutoClosingMessageBox.Factory(showMethod:=Function(caption, buttons)
-                                                                                  Return MessageBox.Show(Me, "Gagal terhubung dengan server, apakah anda ingin keluar dari aplikasi ?", caption, buttons, MessageBoxIcon.Question)
-                                                                              End Function, caption:="Konfimasi")
-                            If DialogResult.Yes = p.Show(timeout:=2500, buttons:=MessageBoxButtons.YesNo, defaultResult:=DialogResult.No) Then
-                                niPopupStatus.Visible = False
-                                niPopupStatus.Icon = Nothing
-                                niPopupStatus.Dispose()
-                                End
-                            End If
-                        Else
-                            Exit Sub
-                        End If
-                    End If
-                Catch ex As MySqlException
-                    MsgBox("Gagal terhubung dengan server : " & ex.ToString)
-                End Try
-            End If
-        Else
-            Try
-                If e.AttemptNumber < 15 Then
-                    e.RetryMode = RetryMode.Reexecute
-                Else
-                    e.RetryMode = RetryMode.Raise
-                    MsgBox("Terputus Dari Server ")
-                    Application.Exit()
-                End If
-            Catch ex As MySqlException
-                MsgBox("Gagal terhubung dengan server : " & ex.ToString)
-            End Try
-        End If
     End Sub
     Private Sub dependency_OnChange(ByVal sender As Object, ByVal e As Devart.Data.MySql.MySqlTableChangeEventArgs)
         CountNotify += 1
@@ -943,21 +897,18 @@ Public Class MenuUtama
         End Select
     End Sub
 #End Region
-
     Private Sub MenuUtama_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         niPopupStatus.Visible = False
         niPopupStatus.Dispose()
         niPopupStatus.Icon = Nothing
         Application.Exit()
     End Sub
-
     Private Sub MenuUtama_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         niPopupStatus.Visible = False
         niPopupStatus.Dispose()
         niPopupStatus.Icon = Nothing
         Application.Exit()
     End Sub
-
     Private Sub MenuUtama_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
         niPopupStatus.Visible = False
         niPopupStatus.Dispose()
