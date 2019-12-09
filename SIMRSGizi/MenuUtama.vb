@@ -693,21 +693,26 @@ Public Class MenuUtama
         End If
     End Sub
     Private Sub tmrAutoRefresh_Tick(sender As Object, e As EventArgs) Handles tmrAutoRefresh.Tick
-
+        Dim rowindexTemp As Int32
         If f_layananGizi.IsActivated = True Then
             dtMinta = minta.NoPermintaan
             bsMinta.DataSource = dtMinta
             bsMinta.Sort = "tglPermintaan"
             f_layananGizi.permintaanNavigator.BindingSource = bsMinta
             f_layananGizi.dgvPermintaan.DataSource = bsMinta
-            'MsgBox("0")
+            rowindexTemp = f_layananGizi.dgvPermintaan.Rows.Count - 1
+            f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Selected = True
+            f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("tglMinta").ErrorText = "Baru"
+
         ElseIf f_layananGizi.Focus = True Then
             dtMinta = minta.NoPermintaan
             bsMinta.DataSource = dtMinta
             bsMinta.Sort = "tglPermintaan"
             f_layananGizi.permintaanNavigator.BindingSource = bsMinta
             f_layananGizi.dgvPermintaan.DataSource = bsMinta
-            'f_layananGizi.SuperTabControl1.SelectedTabIndex = 0
+            rowindexTemp = f_layananGizi.dgvPermintaan.Rows.Count - 1
+            f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Selected = True
+            f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("tglMinta").ErrorText = "Baru"
             btnMenu4.Number = Nothing
             UnfocusTabPelayananGizi()
 
@@ -750,6 +755,7 @@ Public Class MenuUtama
 
     End Sub
     Private Sub dependency_OnChange(ByVal sender As Object, ByVal e As Devart.Data.MySql.MySqlTableChangeEventArgs)
+        TestErrorIcon = True
         CountNotify += 1
         btnMenu4.Number = CountNotify
         CreateTextIcon(CountNotify)

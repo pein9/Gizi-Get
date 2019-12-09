@@ -28,6 +28,9 @@ Module modNum
     Public hitungMundur As Date ' As New TimeSpan()
     Public NumberNotif As Integer
 
+
+    Public TestErrorIcon As Boolean
+
     'Unsort Datagridview
     Public Sub SetGridViewSortState(ByVal dgv As DataGridView, ByVal sortMode As DataGridViewColumnSortMode)
         For Each col As DataGridViewColumn In dgv.Columns

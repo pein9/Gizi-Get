@@ -214,6 +214,11 @@ Public Class frmPelayananGizi
             ShowNameFromButton(dgvPermintaan, e)
         End If
 
+
+        For i As Integer = 0 To dgvPermintaan.RowCount - 1
+            dgvPermintaan.Rows(i).Cells("tglMinta").ErrorText = Nothing
+        Next
+
     End Sub
     <System.Diagnostics.DebuggerStepThrough()>
     Function IsHeaderButtonCell(ByVal GridView As DataGridView, ByVal e As DataGridViewCellEventArgs) As Boolean
@@ -1194,6 +1199,6 @@ Public Class frmPelayananGizi
         MenuUtama.StopDependent()
         fRencana.ShowDialog()
     End Sub
-
 #End Region
+
 End Class
