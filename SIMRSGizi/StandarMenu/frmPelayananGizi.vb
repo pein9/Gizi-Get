@@ -1196,9 +1196,4 @@ Public Class frmPelayananGizi
     End Sub
 
 #End Region
-
-    Private Sub dgvPermintaan_RowsAdded(sender As Object, e As DataGridViewRowsAddedEventArgs) Handles dgvPermintaan.RowsAdded
-
-
-    End Sub
 End Class
