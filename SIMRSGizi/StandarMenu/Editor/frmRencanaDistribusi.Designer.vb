@@ -50,9 +50,6 @@ Partial Class frmRencanaDistribusi
         Me.Label19 = New System.Windows.Forms.Label()
         Me.dgvRencanaMenu = New System.Windows.Forms.DataGridView()
         Me.Choices = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.idSiklus = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.nmMenuMakanan = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.nmExtra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Line3 = New DevComponents.DotNetBar.Controls.Line()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
@@ -63,6 +60,9 @@ Partial Class frmRencanaDistribusi
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idSiklus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nmMenuMakanan = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nmExtra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupContractable3 = New SIMRSGizi.GroupContractable(Me.components)
         Me.lblBentukMakanan = New System.Windows.Forms.Label()
         Me.lblNamaDiet = New System.Windows.Forms.Label()
@@ -123,7 +123,7 @@ Partial Class frmRencanaDistribusi
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel2.Location = New System.Drawing.Point(0, 830)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(949, 55)
+        Me.Panel2.Size = New System.Drawing.Size(945, 55)
         Me.Panel2.TabIndex = 58
         '
         'btnBatal
@@ -156,7 +156,7 @@ Partial Class frmRencanaDistribusi
         Me.StatusStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 885)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(949, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(945, 22)
         Me.StatusStrip1.SizingGrip = False
         Me.StatusStrip1.TabIndex = 57
         Me.StatusStrip1.Text = "StatusStrip1"
@@ -176,7 +176,7 @@ Partial Class frmRencanaDistribusi
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(949, 52)
+        Me.Panel1.Size = New System.Drawing.Size(945, 52)
         Me.Panel1.TabIndex = 59
         '
         'Label1
@@ -323,7 +323,7 @@ Partial Class frmRencanaDistribusi
         Me.dgvRencanaMenu.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dgvRencanaMenu.RowHeadersVisible = False
         Me.dgvRencanaMenu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.dgvRencanaMenu.Size = New System.Drawing.Size(949, 245)
+        Me.dgvRencanaMenu.Size = New System.Drawing.Size(945, 245)
         Me.dgvRencanaMenu.TabIndex = 88
         '
         'Choices
@@ -331,26 +331,6 @@ Partial Class frmRencanaDistribusi
         Me.Choices.HeaderText = "Pilih"
         Me.Choices.Name = "Choices"
         Me.Choices.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        '
-        'idSiklus
-        '
-        Me.idSiklus.DataPropertyName = "id"
-        Me.idSiklus.HeaderText = "ID Siklus"
-        Me.idSiklus.Name = "idSiklus"
-        Me.idSiklus.Visible = False
-        '
-        'nmMenuMakanan
-        '
-        Me.nmMenuMakanan.DataPropertyName = "nmMakanan"
-        Me.nmMenuMakanan.HeaderText = "Nama Menu"
-        Me.nmMenuMakanan.Name = "nmMenuMakanan"
-        '
-        'nmExtra
-        '
-        Me.nmExtra.DataPropertyName = "extraDiet"
-        Me.nmExtra.HeaderText = "Keterangan"
-        Me.nmExtra.Name = "nmExtra"
-        Me.nmExtra.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         '
         'Line3
         '
@@ -452,6 +432,26 @@ Partial Class frmRencanaDistribusi
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         '
+        'idSiklus
+        '
+        Me.idSiklus.DataPropertyName = "id"
+        Me.idSiklus.HeaderText = "ID Siklus"
+        Me.idSiklus.Name = "idSiklus"
+        Me.idSiklus.Visible = False
+        '
+        'nmMenuMakanan
+        '
+        Me.nmMenuMakanan.DataPropertyName = "nmMakanan"
+        Me.nmMenuMakanan.HeaderText = "Nama Menu"
+        Me.nmMenuMakanan.Name = "nmMenuMakanan"
+        '
+        'nmExtra
+        '
+        Me.nmExtra.DataPropertyName = "extraDiet"
+        Me.nmExtra.HeaderText = "Keterangan"
+        Me.nmExtra.Name = "nmExtra"
+        Me.nmExtra.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        '
         'GroupContractable3
         '
         Me.GroupContractable3.Controls.Add(Me.lblBentukMakanan)
@@ -509,7 +509,7 @@ Partial Class frmRencanaDistribusi
         '
         Me.lblKetDiet.AutoSize = True
         Me.lblKetDiet.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblKetDiet.Location = New System.Drawing.Point(340, 47)
+        Me.lblKetDiet.Location = New System.Drawing.Point(340, 74)
         Me.lblKetDiet.Name = "lblKetDiet"
         Me.lblKetDiet.Size = New System.Drawing.Size(11, 14)
         Me.lblKetDiet.TabIndex = 85
@@ -518,7 +518,7 @@ Partial Class frmRencanaDistribusi
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(224, 46)
+        Me.Label21.Location = New System.Drawing.Point(224, 73)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(113, 13)
         Me.Label21.TabIndex = 84
@@ -537,7 +537,7 @@ Partial Class frmRencanaDistribusi
         '
         Me.lblExtraDiet.AutoSize = True
         Me.lblExtraDiet.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblExtraDiet.Location = New System.Drawing.Point(340, 25)
+        Me.lblExtraDiet.Location = New System.Drawing.Point(340, 52)
         Me.lblExtraDiet.Name = "lblExtraDiet"
         Me.lblExtraDiet.Size = New System.Drawing.Size(11, 14)
         Me.lblExtraDiet.TabIndex = 83
@@ -546,7 +546,7 @@ Partial Class frmRencanaDistribusi
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(275, 24)
+        Me.Label18.Location = New System.Drawing.Point(275, 51)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(62, 13)
         Me.Label18.TabIndex = 82
@@ -891,7 +891,7 @@ Partial Class frmRencanaDistribusi
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(949, 907)
+        Me.ClientSize = New System.Drawing.Size(945, 907)
         Me.ControlBox = False
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Label24)

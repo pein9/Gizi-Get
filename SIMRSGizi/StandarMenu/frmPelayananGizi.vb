@@ -90,6 +90,7 @@ Public Class frmPelayananGizi
         dtMinta = minta.NoPermintaan
 
         bsMinta.DataSource = dtMinta
+        bsMinta.Sort = "tglPermintaan"
         permintaanNavigator.BindingSource = bsMinta
         dgvPermintaan.DataSource = bsMinta
 
@@ -238,7 +239,7 @@ Public Class frmPelayananGizi
                     If .Cells("nIMT").Value <= 0 Then
                         .Cells("nIMT").Style.BackColor = Color.Black
                     ElseIf .Cells("nIMT").Value < 17 Then
-                        .DefaultCellStyle.BackColor = Color.Red
+                        .Cells("nIMT").Style.BackColor = Color.Red
                         tmrBlinkKurus.Enabled = True
                     ElseIf .Cells("nIMT").Value >= 17 And .Cells("nIMT").Value <= 18.5 Then
                         .Cells("nIMT").Style.ForeColor = Color.Black
@@ -312,7 +313,7 @@ Public Class frmPelayananGizi
             For Each row As DataGridViewRow In dgvPermintaan.Rows
                 If Not IsDBNull(row.Cells("nIMT").Value) Then
                     If row.Cells("nIMT").Value < 17 Then
-                        row.DefaultCellStyle.ForeColor = Color.White
+                        row.Cells("nIMT").Style.ForeColor = Color.White
                     End If
                 End If
             Next
@@ -321,7 +322,7 @@ Public Class frmPelayananGizi
             For Each row As DataGridViewRow In dgvPermintaan.Rows
                 If Not IsDBNull(row.Cells("nIMT").Value) Then
                     If row.Cells("nIMT").Value < 17 Then
-                        row.DefaultCellStyle.ForeColor = Color.Black
+                        row.Cells("nIMT").Style.ForeColor = Color.Black
                     End If
                 End If
             Next
@@ -334,8 +335,8 @@ Public Class frmPelayananGizi
             For Each row As DataGridViewRow In dgvPermintaan.Rows
                 If Not IsDBNull(row.Cells("nIMT").Value) Then
                     If row.Cells("nIMT").Value >= 27.0 Then
-                        row.DefaultCellStyle.BackColor = Color.Purple
-                        row.DefaultCellStyle.ForeColor = Color.White
+                        row.Cells("nIMT").Style.BackColor = Color.Purple
+                        row.Cells("nIMT").Style.ForeColor = Color.White
                     End If
                 End If
             Next
@@ -345,8 +346,8 @@ Public Class frmPelayananGizi
             For Each row As DataGridViewRow In dgvPermintaan.Rows
                 If Not IsDBNull(row.Cells("nIMT").Value) Then
                     If (row.Cells("nIMT").Value >= 27.0) Then
-                        row.DefaultCellStyle.BackColor = Color.SandyBrown
-                        row.DefaultCellStyle.ForeColor = Color.White
+                        row.Cells("nIMT").Style.BackColor = Color.SandyBrown
+                        row.Cells("nIMT").Style.ForeColor = Color.White
                     End If
                 End If
             Next
@@ -361,7 +362,7 @@ Public Class frmPelayananGizi
                 If Not IsDBNull(row.Cells("dIMT").Value) Then
                     If row.Cells("dIMT").Value < 17 Then
                         'row.DefaultCellStyle.BackColor = Color.HotPink
-                        row.DefaultCellStyle.ForeColor = Color.White
+                        row.Cells("dIMT").Style.ForeColor = Color.White
                     End If
                 End If
             Next
@@ -372,7 +373,7 @@ Public Class frmPelayananGizi
                 If Not IsDBNull(row.Cells("dIMT").Value) Then
                     If row.Cells("dIMT").Value < 17 Then
                         'row.DefaultCellStyle.BackColor = Color.LightPink
-                        row.DefaultCellStyle.ForeColor = Color.Black
+                        row.Cells("dIMT").Style.ForeColor = Color.Black
                     End If
                 End If
             Next
@@ -384,8 +385,8 @@ Public Class frmPelayananGizi
             For Each row As DataGridViewRow In dgvDistribusi.Rows
                 If Not IsDBNull(row.Cells("dIMT").Value) Then
                     If row.Cells("dIMT").Value >= 27.0 Then
-                        row.DefaultCellStyle.BackColor = Color.Purple
-                        row.DefaultCellStyle.ForeColor = Color.White
+                        row.Cells("dIMT").Style.BackColor = Color.Purple
+                        row.Cells("dIMT").Style.ForeColor = Color.White
                     End If
                 End If
             Next
@@ -395,8 +396,8 @@ Public Class frmPelayananGizi
             For Each row As DataGridViewRow In dgvDistribusi.Rows
                 If Not IsDBNull(row.Cells("dIMT").Value) Then
                     If row.Cells("dIMT").Value >= 27.0 Then
-                        row.DefaultCellStyle.BackColor = Color.SandyBrown
-                        row.DefaultCellStyle.ForeColor = Color.White
+                        row.Cells("dIMT").Style.BackColor = Color.SandyBrown
+                        row.Cells("dIMT").Style.ForeColor = Color.White
                     End If
                 End If
             Next
@@ -411,7 +412,7 @@ Public Class frmPelayananGizi
                 For Each row As DataGridViewRow In dgvPermintaan.Rows
 
                     If row.Cells("nIMT").Value >= 27.0 Then
-                        row.DefaultCellStyle.BackColor = Color.Red
+                        row.Cells("nIMT").Style.BackColor = Color.Red
                     End If
                 Next
 
@@ -424,7 +425,7 @@ Public Class frmPelayananGizi
                 For Each row As DataGridViewRow In dgvPermintaan.Rows
 
                     If row.Cells(11).Value >= 27.0 Then
-                        row.DefaultCellStyle.BackColor = Color.Green
+                        row.Cells("nIMT").Style.BackColor = Color.Green
                     End If
                 Next
 
@@ -1060,7 +1061,7 @@ Public Class frmPelayananGizi
 
         If IsHeaderButtonCell(dgvDistribusi, e) Then
             ShowNameFromButtonDistribusi(dgvDistribusi, e)
-            HeaderChoice.RefreshCheckState()
+            ' HeaderChoice.RefreshCheckState()
         End If
 
         If e.ColumnIndex = dgvDistribusi.Columns("ColblBatal").Index And e.RowIndex <> -1 Then
@@ -1193,5 +1194,11 @@ Public Class frmPelayananGizi
         MenuUtama.StopDependent()
         fRencana.ShowDialog()
     End Sub
+
 #End Region
+
+    Private Sub dgvPermintaan_RowsAdded(sender As Object, e As DataGridViewRowsAddedEventArgs) Handles dgvPermintaan.RowsAdded
+
+
+    End Sub
 End Class

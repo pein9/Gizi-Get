@@ -9,9 +9,11 @@ Public Class frmRencanaDistribusi
     Protected RecanaSaving As Boolean
     Protected IDRencana As String
 
+    Protected dtPermintaanRencana As DataTable
+    Protected bsPermintaanRencana As New BindingSource
+
     Protected rencana As New RencanaDistribusi
     Protected jajan As New Snack
-
 
     Dim MintaMenu As New PermintaanMenu
     Dim dtPermintaanMenu As DataTable
@@ -40,12 +42,18 @@ Public Class frmRencanaDistribusi
         cboSnack.ValueMember = "KDSNACK"
         cboSnack.DataSource = jajan.DataSnack
 
-        dgvRencanaMenu.DataSource = minta.DataPerSiklus(kodeWaktu)
+
+        dtPermintaanRencana = minta.DataPerSiklus(kodeWaktu)
+
+        bsPermintaanRencana.DataSource = dtPermintaanRencana
+        bsPermintaanRencana.Sort = "nmMakanan"
+
+        dgvRencanaMenu.DataSource = bsPermintaanRencana
 
         dgvRencanaMenu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
 
         lblRencanaDistribusi.Text = FindMaxPlusDatatable(rencana.DataNoRencanaDistribusi, "KDRENCANADISTRIBUSI", "RD", 5)
-        dgvRencanaMenu.Sort(dgvRencanaMenu.Columns(2), ListSortDirection.Ascending)
+
 
         dtPermintaanMenu = MintaMenu.DataPermintaanDiet(Me.lblKdPermintaan.Text)
         dgvPermintaanMenu.DataSource = dtPermintaanMenu
