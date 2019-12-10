@@ -39,7 +39,6 @@ Partial Class MenuUtama
         Me.lblDate = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Pemisah1 = New NJFLib.Controls.CollapsibleSplitter()
         Me.PanelMenu = New System.Windows.Forms.Panel()
-        Me.btnMenu4 = New SIMRSGizi.NotiButton()
         Me.btnMenu10 = New DevComponents.DotNetBar.ButtonX()
         Me.btnMenu9 = New DevComponents.DotNetBar.ButtonX()
         Me.btnMenu8 = New DevComponents.DotNetBar.ButtonX()
@@ -52,7 +51,6 @@ Partial Class MenuUtama
         Me.DockPanel = New WeifenLuo.WinFormsUI.Docking.DockPanel()
         Me.PanelEx1 = New DevComponents.DotNetBar.PanelEx()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.btnKeluarKembali = New DevComponents.DotNetBar.ButtonX()
         Me.StyleManager1 = New DevComponents.DotNetBar.StyleManager(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
@@ -62,12 +60,11 @@ Partial Class MenuUtama
         Me.tmrAutoRefresh = New System.Windows.Forms.Timer(Me.components)
         Me.toolBar = New System.Windows.Forms.ToolBar()
         Me.toolBarButtonToggle1 = New System.Windows.Forms.ToolBarButton()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.btnMenu4 = New SIMRSGizi.NotiButton()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.PanelMenu.SuspendLayout()
         Me.PanelEx1.SuspendLayout()
-        Me.Panel2.SuspendLayout()
         Me.ctxNotify.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -180,21 +177,6 @@ Partial Class MenuUtama
         Me.PanelMenu.Name = "PanelMenu"
         Me.PanelMenu.Size = New System.Drawing.Size(201, 656)
         Me.PanelMenu.TabIndex = 18
-        '
-        'btnMenu4
-        '
-        Me.btnMenu4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btnMenu4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.btnMenu4.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnMenu4.Font = New System.Drawing.Font("Bauhaus 93", 12.0!)
-        Me.btnMenu4.Location = New System.Drawing.Point(0, 522)
-        Me.btnMenu4.Name = "btnMenu4"
-        Me.btnMenu4.Number = 0
-        Me.btnMenu4.Size = New System.Drawing.Size(199, 58)
-        Me.btnMenu4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.btnMenu4.TabIndex = 0
-        Me.btnMenu4.Text = "   Pelayanan Gizi"
-        Me.btnMenu4.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Left
         '
         'btnMenu10
         '
@@ -376,22 +358,11 @@ Partial Class MenuUtama
         Me.Panel2.BackgroundImage = CType(resources.GetObject("Panel2.BackgroundImage"), System.Drawing.Image)
         Me.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Controls.Add(Me.TextBox1)
-        Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(546, 71)
         Me.Panel2.TabIndex = 30
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(293, 32)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'btnKeluarKembali
         '
@@ -459,12 +430,20 @@ Partial Class MenuUtama
         Me.toolBarButtonToggle1.Style = System.Windows.Forms.ToolBarButtonStyle.ToggleButton
         Me.toolBarButtonToggle1.ToolTipText = "Toggle the first CollapsibleSplitter"
         '
-        'TextBox1
+        'btnMenu4
         '
-        Me.TextBox1.Location = New System.Drawing.Point(171, 11)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 1
+        Me.btnMenu4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnMenu4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.btnMenu4.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnMenu4.Font = New System.Drawing.Font("Bauhaus 93", 12.0!)
+        Me.btnMenu4.Location = New System.Drawing.Point(0, 522)
+        Me.btnMenu4.Name = "btnMenu4"
+        Me.btnMenu4.Number = 0
+        Me.btnMenu4.Size = New System.Drawing.Size(199, 58)
+        Me.btnMenu4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btnMenu4.TabIndex = 0
+        Me.btnMenu4.Text = "   Pelayanan Gizi"
+        Me.btnMenu4.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Left
         '
         'MenuUtama
         '
@@ -492,8 +471,6 @@ Partial Class MenuUtama
         Me.StatusStrip1.PerformLayout()
         Me.PanelMenu.ResumeLayout(False)
         Me.PanelEx1.ResumeLayout(False)
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
         Me.ctxNotify.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -536,6 +513,4 @@ Partial Class MenuUtama
     Private WithEvents toolBar As ToolBar
     Private WithEvents toolBarButtonToggle1 As ToolBarButton
     Friend WithEvents niPopupStatus As NotifyIcon
-    Friend WithEvents Button1 As Button
-    Friend WithEvents TextBox1 As TextBox
 End Class

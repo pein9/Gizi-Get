@@ -177,9 +177,16 @@ Public Class frmPelayananGizi
         fRencana.lblExtraDiet.Text = PermintaanRow.Field(Of String)("extraDiet")
         fRencana.lblKetDiet.Text = PermintaanRow.Field(Of String)("keteranganDiet")
 
-        dgvPermintaan.CurrentRow.Cells("tglMinta").ErrorText = ""
-        dgvPermintaan.CurrentRow.Cells("tglMinta").Style.ForeColor = Color.Black
-        dgvPermintaan.CurrentRow.Cells("tglMinta").Style.Font = New Font(dgvPermintaan.DefaultCellStyle.Font, FontStyle.Regular)
+        dgvPermintaan.CurrentRow.Cells("kdMinta").ErrorText = ""
+        dgvPermintaan.CurrentRow.Cells("kdMinta").Style.ForeColor = Color.Black
+        dgvPermintaan.CurrentRow.Cells("kdMinta").Style.Font = New Font(dgvPermintaan.DefaultCellStyle.Font, FontStyle.Regular)
+
+
+        If CountNotify <> 0 Then
+            CountNotify = 0
+            MenuUtama.btnMenu4.Number = Nothing
+            MenuUtama.niPopupStatus.Icon = My.Resources.Nutri2
+        End If
 
 
         MenuUtama.StopDependent()
@@ -219,9 +226,6 @@ Public Class frmPelayananGizi
         If IsHeaderButtonCell(dgvPermintaan, e) Then
             ShowNameFromButton(dgvPermintaan, e)
         End If
-        '  For i As Integer = 0 To dgvPermintaan.RowCount - 1
-        'dgvPermintaan.Rows(i).Cells("tglMinta").ErrorText = Nothing
-        ' Next
     End Sub
     <System.Diagnostics.DebuggerStepThrough()>
     Function IsHeaderButtonCell(ByVal GridView As DataGridView, ByVal e As DataGridViewCellEventArgs) As Boolean

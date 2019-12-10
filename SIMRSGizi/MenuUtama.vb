@@ -611,30 +611,16 @@ Public Class MenuUtama
     End Sub
 #End Region
     Dim hitungMundur As Date ' As New TimeSpan()
-
     Private Sub AddBaruCell()
-        Dim rowindexTemp As Int32
-        If CountNotify > 0 Then
-            If f_layananGizi.dgvPermintaan.RowCount > 0 Then
-                Dim testdata As Int16 = f_layananGizi.dgvPermintaan.Rows.Count - 1
-                For rowindexTemp = testdata To f_layananGizi.dgvPermintaan.Rows.Count - 1
-                    f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("tglMinta").ErrorText = "Baru"
-                    f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("tglMinta").Style.ForeColor = Color.Red
-                    f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("tglMinta").Style.Font = New Font(f_layananGizi.dgvPermintaan.DefaultCellStyle.Font, FontStyle.Bold)
-                Next
-            End If
-        ElseIf CountNotify > 1 Then
-            If f_layananGizi.dgvPermintaan.RowCount > 0 Then
-                For rowindexTemp = CountNotify To f_layananGizi.dgvPermintaan.Rows.Count - 1
-                    f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("tglMinta").ErrorText = "Baru"
-                    f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("tglMinta").Style.ForeColor = Color.Red
-                    f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("tglMinta").Style.Font = New Font(f_layananGizi.dgvPermintaan.DefaultCellStyle.Font, FontStyle.Bold)
-                Next
-            End If
+        If f_layananGizi.dgvPermintaan.RowCount > 0 Then
+            Dim testdata As Int16 = f_layananGizi.dgvPermintaan.Rows.Count - 1
+            For rowindexTemp = testdata To f_layananGizi.dgvPermintaan.Rows.Count - 1
+                f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("kdMinta").ErrorText = "Baru"
+                f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("kdMinta").Style.ForeColor = Color.Red
+                f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("kdMinta").Style.Font = New Font(f_layananGizi.dgvPermintaan.DefaultCellStyle.Font, FontStyle.Bold)
+            Next
         End If
-
     End Sub
-
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Dim waktuTersisa As TimeSpan = hitungMundur.Subtract(Now)
         waktuTersisa = New TimeSpan(0, waktuTersisa.Minutes, waktuTersisa.Seconds)
@@ -803,10 +789,6 @@ Public Class MenuUtama
         niPopupStatus.Icon = My.Resources.Nutri2
     End Sub
     Public Sub CreateTextIcon(ByVal str As String)
-        'Dim rnd As New Random
-        'Dim random_Color As New Color
-        'random_Color = Color.FromArgb(rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255))
-
         Dim fontToUse As Font = New Font("Tahoma", 16, FontStyle.Regular, GraphicsUnit.Pixel)
         Dim brushToUse As Brush = New SolidBrush(Color.White)
         Dim bitmapText As Bitmap = New Bitmap(16, 16)
@@ -818,8 +800,6 @@ Public Class MenuUtama
         g.DrawString(str, fontToUse, brushToUse, -4, -2)
         hIcon = (bitmapText.GetHicon())
         niPopupStatus.Icon = System.Drawing.Icon.FromHandle(hIcon)
-
-        'Win32.DestroyIcon(hIcon.ToInt32)
     End Sub
 #End Region
 #Region "Notification Focus"
@@ -943,18 +923,24 @@ Public Class MenuUtama
         niPopupStatus.Icon = Nothing
         Application.Exit()
     End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
         Dim rowindexTemp As Int32
-        '  If CountNotify > 0 Then
-        Dim testdata As Int16 = f_layananGizi.dgvPermintaan.Rows.Count - 1
-        If f_layananGizi.dgvPermintaan.RowCount > 0 Then
-            For rowindexTemp = testdata To f_layananGizi.dgvPermintaan.Rows.Count - 1
-                f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("tglMinta").ErrorText = "Baru"
-                f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("tglMinta").Style.ForeColor = Color.Red
-                f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("tglMinta").Style.Font = New Font(f_layananGizi.dgvPermintaan.DefaultCellStyle.Font, FontStyle.Bold)
-            Next
+        For rowindexTemp = 0 To f_layananGizi.dgvPermintaan.Rows.Count - 1
+            f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("tglMinta").ErrorText = Nothing
+            f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("tglMinta").Style.ForeColor = Color.Black
+            f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("tglMinta").Style.Font = New Font(f_layananGizi.dgvPermintaan.DefaultCellStyle.Font, FontStyle.Bold)
+        Next
+
+        Dim Position As Integer = f_layananGizi.dgvPermintaan.Rows.Count - 1
+        If f_layananGizi.dgvPermintaan.AllowUserToAddRows Then
+            Position -= 1
         End If
-        ' End If
+
+        Dim LastRow = (From Items In f_layananGizi.dgvPermintaan.Rows.Cast(Of DataGridViewRow)()
+                       Select Items).ElementAt(Position)
+
+        For col As Integer = 0 To LastRow.Cells.Count - 1
+            Console.WriteLine("[{0}]", LastRow.Cells(col).Value)
+        Next
     End Sub
 End Class
