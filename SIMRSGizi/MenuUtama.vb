@@ -620,7 +620,9 @@ Public Class MenuUtama
                 f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("kdMinta").Style.Font = New Font(f_layananGizi.dgvPermintaan.DefaultCellStyle.Font, FontStyle.Bold)
             Next
         End If
+
     End Sub
+
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Dim waktuTersisa As TimeSpan = hitungMundur.Subtract(Now)
         waktuTersisa = New TimeSpan(0, waktuTersisa.Minutes, waktuTersisa.Seconds)
