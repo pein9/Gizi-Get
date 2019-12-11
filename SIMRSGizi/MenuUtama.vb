@@ -82,12 +82,10 @@ Public Class MenuUtama
     End Sub
     Private Sub TutupSemuaDokumen()
         If DockPanel.DocumentStyle = DocumentStyle.SystemMdi Then
-
             For Each form As Form In MdiChildren
                 form.Close()
             Next
         Else
-
             For Each document As IDockContent In DockPanel.DocumentsToArray()
                 document.DockHandler.DockPanel = Nothing
                 document.DockHandler.Close()
@@ -611,18 +609,6 @@ Public Class MenuUtama
     End Sub
 #End Region
     Dim hitungMundur As Date ' As New TimeSpan()
-    Private Sub AddBaruCell()
-        If f_layananGizi.dgvPermintaan.RowCount > 0 Then
-            Dim testdata As Int16 = f_layananGizi.dgvPermintaan.Rows.Count - 1
-            For rowindexTemp = testdata To f_layananGizi.dgvPermintaan.Rows.Count - 1
-                f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("kdMinta").ErrorText = "Baru"
-                f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("kdMinta").Style.ForeColor = Color.Red
-                f_layananGizi.dgvPermintaan.Rows(rowindexTemp).Cells("kdMinta").Style.Font = New Font(f_layananGizi.dgvPermintaan.DefaultCellStyle.Font, FontStyle.Bold)
-            Next
-        End If
-
-    End Sub
-
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Dim waktuTersisa As TimeSpan = hitungMundur.Subtract(Now)
         waktuTersisa = New TimeSpan(0, waktuTersisa.Minutes, waktuTersisa.Seconds)
@@ -712,7 +698,6 @@ Public Class MenuUtama
             bsMinta.Sort = "tglPermintaan"
             f_layananGizi.permintaanNavigator.BindingSource = bsMinta
             f_layananGizi.dgvPermintaan.DataSource = bsMinta
-            AddBaruCell()
 
         ElseIf f_layananGizi.Focus = True Then
             dtMinta = minta.NoPermintaan
@@ -720,7 +705,7 @@ Public Class MenuUtama
             bsMinta.Sort = "tglPermintaan"
             f_layananGizi.permintaanNavigator.BindingSource = bsMinta
             f_layananGizi.dgvPermintaan.DataSource = bsMinta
-            AddBaruCell()
+
             btnMenu4.Number = Nothing
             UnfocusTabPelayananGizi()
 
@@ -833,7 +818,6 @@ Public Class MenuUtama
             btnMenu8.Visible = False
             btnMenu9.Visible = False
             btnMenu10.Visible = False
-            AddBaruCell()
         End If
 
         btnMenu1.Font = New Font("Bauhaus 93", 12)

@@ -58,7 +58,6 @@ Public Class frmPelayananGizi
             dgvDistribusi.Columns(25).HeaderCell = HeaderChoice
         End If
     End Sub
-
 #Region "TopMost Excel"
     <DllImport("user32.dll")>
     Private Shared Function SetForegroundWindow(ByVal hWnd As IntPtr) As <MarshalAs(UnmanagedType.Bool)> Boolean
@@ -104,21 +103,16 @@ Public Class frmPelayananGizi
             LogRecordChanges(rowz)
         Next
     End Sub
-
     Private Sub LogRecordChanges(row As DataRow)
         If row.RowState = DataRowState.Unchanged Then
             Console.WriteLine("No changes to row.")
-            'MsgBox("No changes to row")
         ElseIf row.RowState = DataRowState.Modified Then
             For Each column As DataColumn In row.Table.Columns
                 Dim currentValue = row(column, DataRowVersion.Current)
                 Dim originalValue = row(column, DataRowVersion.Original)
-
                 If currentValue.Equals(originalValue) Then
-                    'MsgBox($"No changes to column '{column.ColumnName}'.")
                     Console.WriteLine($"No changes to column '{column.ColumnName}'.")
                 Else
-                    'MsgBox($"Column '{column.ColumnName}' changed from '{originalValue}' to '{currentValue}'.")
                     Console.WriteLine($"Column '{column.ColumnName}' changed from '{originalValue}' to '{currentValue}'.")
                 End If
             Next
@@ -1230,5 +1224,4 @@ Public Class frmPelayananGizi
         fRencana.ShowDialog()
     End Sub
 #End Region
-
 End Class
