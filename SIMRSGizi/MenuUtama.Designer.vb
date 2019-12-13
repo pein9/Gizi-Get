@@ -39,6 +39,7 @@ Partial Class MenuUtama
         Me.lblDate = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Pemisah1 = New NJFLib.Controls.CollapsibleSplitter()
         Me.PanelMenu = New System.Windows.Forms.Panel()
+        Me.btnMenu4 = New SIMRSGizi.NotiButton()
         Me.btnMenu10 = New DevComponents.DotNetBar.ButtonX()
         Me.btnMenu9 = New DevComponents.DotNetBar.ButtonX()
         Me.btnMenu8 = New DevComponents.DotNetBar.ButtonX()
@@ -60,7 +61,6 @@ Partial Class MenuUtama
         Me.tmrAutoRefresh = New System.Windows.Forms.Timer(Me.components)
         Me.toolBar = New System.Windows.Forms.ToolBar()
         Me.toolBarButtonToggle1 = New System.Windows.Forms.ToolBarButton()
-        Me.btnMenu4 = New SIMRSGizi.NotiButton()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.PanelMenu.SuspendLayout()
@@ -177,6 +177,21 @@ Partial Class MenuUtama
         Me.PanelMenu.Name = "PanelMenu"
         Me.PanelMenu.Size = New System.Drawing.Size(201, 656)
         Me.PanelMenu.TabIndex = 18
+        '
+        'btnMenu4
+        '
+        Me.btnMenu4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnMenu4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.btnMenu4.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnMenu4.Font = New System.Drawing.Font("Bauhaus 93", 12.0!)
+        Me.btnMenu4.Location = New System.Drawing.Point(0, 522)
+        Me.btnMenu4.Name = "btnMenu4"
+        Me.btnMenu4.Number = 0
+        Me.btnMenu4.Size = New System.Drawing.Size(199, 58)
+        Me.btnMenu4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btnMenu4.TabIndex = 0
+        Me.btnMenu4.Text = "   Pelayanan Gizi"
+        Me.btnMenu4.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Left
         '
         'btnMenu10
         '
@@ -429,21 +444,6 @@ Partial Class MenuUtama
         Me.toolBarButtonToggle1.Name = "toolBarButtonToggle1"
         Me.toolBarButtonToggle1.Style = System.Windows.Forms.ToolBarButtonStyle.ToggleButton
         Me.toolBarButtonToggle1.ToolTipText = "Toggle the first CollapsibleSplitter"
-        '
-        'btnMenu4
-        '
-        Me.btnMenu4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btnMenu4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.btnMenu4.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnMenu4.Font = New System.Drawing.Font("Bauhaus 93", 12.0!)
-        Me.btnMenu4.Location = New System.Drawing.Point(0, 522)
-        Me.btnMenu4.Name = "btnMenu4"
-        Me.btnMenu4.Number = 0
-        Me.btnMenu4.Size = New System.Drawing.Size(199, 58)
-        Me.btnMenu4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.btnMenu4.TabIndex = 0
-        Me.btnMenu4.Text = "   Pelayanan Gizi"
-        Me.btnMenu4.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Left
         '
         'MenuUtama
         '

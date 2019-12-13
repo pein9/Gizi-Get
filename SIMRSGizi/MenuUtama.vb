@@ -745,7 +745,6 @@ Public Class MenuUtama
         'depend.OnChange += New Devart.Data.MySql.OnChangeEventHandler(AddressOf depend_OnChange)
         AddHandler depend.OnChange, New OnChangeEventHandler(AddressOf dependency_OnChange)
         MySqlDependency.Start(connectionDevart)
-
     End Sub
     Private Sub dependency_OnChange(ByVal sender As Object, ByVal e As Devart.Data.MySql.MySqlTableChangeEventArgs)
         TestErrorIcon = True
@@ -755,7 +754,6 @@ Public Class MenuUtama
         niPopupStatus.BalloonTipText = "Ada " & CountNotify & " permintaan baru untuk di lihat."
         niPopupStatus.BalloonTipTitle = niPopupStatus.Text ' & batteryCharge.ToString() & "% " & status.PowerLineStatus.ToString()
         niPopupStatus.ShowBalloonTip(100)
-
     End Sub
     Public Sub StopDependent()
         MySqlDependency.Stop(con)

@@ -694,7 +694,7 @@ Public Class frmPelayananGizi
                 If Not IsDBNull(.Cells("dIMT").Value) Then
                     If .Cells("dIMT").Value < 17 Then
                         tmrDistribusi.Enabled = True
-                        .DefaultCellStyle.BackColor = Color.Red
+                        .Cells("dIMT").Style.BackColor = Color.Red
                     ElseIf .Cells("dIMT").Value >= 17 And .Cells("dIMT").Value <= 18.5 Then
                         .Cells("dIMT").Style.ForeColor = Color.Black
                         .Cells("dIMT").Style.SelectionForeColor = Color.DarkGray
@@ -746,8 +746,8 @@ Public Class frmPelayananGizi
                 ColumnDistribusi.Visible = False
 
 
-                ' HeaderChoice = Nothing
-                '  dgvDistribusi.Columns(25).HeaderCell = HeaderChoice
+                HeaderChoice.CheckState = CheckState.Unchecked
+                'dgvDistribusi.Columns(25).HeaderCell = HeaderChoice
 
                 For i As Integer = 0 To Me.dgvDistribusi.Rows.Count - 1
                     With dgvDistribusi.Rows(i)
@@ -925,9 +925,7 @@ Public Class frmPelayananGizi
         'workbook.Close(True, Type.Missing, Type.Missing)
     End Sub
     Protected Sub CetakSemua()
-        dtPermintaanMenu = MintaMenu.DataPermintaanMenu(dgvDistribusi.CurrentRow.Cells("kdDMinta").Value.ToString)
-        ListKodeDiet = (From r In dtPermintaanMenu.AsEnumerable() Select r.Field(Of String)(1)).ToList()
-        Dim messageKodeDiet = String.Join(Environment.NewLine, ListKodeDiet.ToArray())
+
 
         FileLocationExcel = Application.StartupPath + "\template\TemplateGizi.xlsm"
         ' Dim i As Integer
@@ -974,35 +972,68 @@ Public Class frmPelayananGizi
 
                     .Cells(rowIndex + 1, 3) = Me.dgvDistribusi.Rows(i).Cells("dWaktu").Value.ToString.Trim & " / " &
                                  "Snack : " & UCase(Me.dgvDistribusi.Rows(i).Cells("nmSnack").Value.ToString.Trim)
-                    .Range(.Cells(rowIndex + 1, 3), .Cells(rowIndex + 1, 3)).HorizontalAlignment = Excel.Constants.xlCenter
+                    .Range(.Cells(rowIndex + 1, 2), .Cells(rowIndex + 1, 3)).HorizontalAlignment = Excel.Constants.xlCenter
+                    .Range(.Cells(rowIndex + 1, 2), .Cells(rowIndex + 1, 3)).Merge()
 
                     .Cells(rowIndex + 2, 2) = "Nama :"
+                    .Cells(rowIndex + 2, 2).HorizontalAlignment = Excel.Constants.xlRight
                     .Cells(rowIndex + 2, 3) = Me.dgvDistribusi.Rows(i).Cells("nmPasienD").Value.ToString.Trim
+                    .Cells(rowIndex + 2, 3).HorizontalAlignment = Excel.Constants.xlLeft
 
                     .Cells(rowIndex + 3, 2) = "TL :"
+                    .Cells(rowIndex + 3, 2).HorizontalAlignment = Excel.Constants.xlRight
                     .Cells(rowIndex + 3, 3) = CDate(Me.dgvDistribusi.Rows(i).Cells("DtglLahir").Value.ToString)
+                    .Cells(rowIndex + 3, 3).HorizontalAlignment = Excel.Constants.xlLeft
 
                     .Cells(rowIndex + 4, 2) = "No RM :"
+                    .Cells(rowIndex + 4, 2).HorizontalAlignment = Excel.Constants.xlRight
                     .Cells(rowIndex + 4, 3) = Me.dgvDistribusi.Rows(i).Cells("NodRM").Value.ToString.Trim
+                    .Cells(rowIndex + 4, 3).HorizontalAlignment = Excel.Constants.xlLeft
 
+                    .Cells(rowIndex + 5, 2) = "Diet :"
+                    .Cells(rowIndex + 5, 2).HorizontalAlignment = Excel.Constants.xlRight
 
-                    '.Range(.Cells(rowIndex, 2), .Cells(rowIndex + 5, 3)).EntireColumn.AutoFit()
+                    dtPermintaanMenu = MintaMenu.DataPermintaanMenu(dgvDistribusi.Rows(i).Cells("kdDMinta").Value.ToString)
+                    ListKodeDiet = (From r In dtPermintaanMenu.AsEnumerable() Select r.Field(Of String)(1)).ToList()
+                    Dim messageKodeDiet = String.Join(Environment.NewLine, ListKodeDiet.ToArray())
 
-                    .Range(.Cells(rowIndex + 1, 2), .Cells(rowIndex + 1, 3)).Merge()
-                    ' .Range(.Cells(rowIndex, 2), .Cells(rowIndex + 5, 3)).BorderAround()
-                    rowIndex += 7
+                    Dim CountRow As Integer = 5
+                    Dim CountNormal As Integer = 3
+
+                    For Each row In dtPermintaanMenu.AsEnumerable()
+                        .Cells(rowIndex + CountRow, 3) = row("KETERANGANDIET")
+                        CountRow += 1
+                    Next
+                    .Cells(rowIndex + CountRow, 2) = "Alergi :"
+                    .Cells(rowIndex + CountRow, 3) = dgvDistribusi.Rows(i).Cells("dAlergi").Value.ToString.Trim
+                    .Cells(rowIndex + (CountRow + 1), 2) = "Keterangan :"
+                    .Cells(rowIndex + (CountRow + 1), 3) = dgvDistribusi.CurrentRow.Cells("ketDietNama").Value.ToString.Trim
+
+                    .Range(.Cells(rowIndex, 2), .Cells(rowIndex + (CountRow + 1), 3)).BorderAround()
+
+                    .Range(.Cells(rowIndex + (CountRow + 2), 2), .Cells(rowIndex + (CountRow + 2), 3)).Merge()
+                    .Range(.Cells(rowIndex + (CountRow + 2), 2), .Cells(rowIndex + (CountRow + 2), 3)).Font.Bold = True
+                    .Range(.Cells(rowIndex + (CountRow + 2), 2), .Cells(rowIndex + (CountRow + 2), 3)).HorizontalAlignment = Excel.Constants.xlCenter
+                    .Cells(rowIndex + (CountRow + 2), 2) = "PENGAMBILAN ALAT MAKAN "
+
+                    .Range(.Cells(rowIndex + (CountRow + 3), 2), .Cells(rowIndex + (CountRow + 3), 3)).Merge()
+                    .Range(.Cells(rowIndex + (CountRow + 3), 2), .Cells(rowIndex + (CountRow + 3), 3)).Font.Bold = True
+                    .Range(.Cells(rowIndex + (CountRow + 3), 2), .Cells(rowIndex + (CountRow + 3), 3)).HorizontalAlignment = Excel.Constants.xlCenter
+                    .Cells(rowIndex + (CountRow + 3), 2) = "SETELAH 1 JAM DISTRIBUSI"
+
+                    .Range(.Cells(rowIndex + (CountRow + 2), 2), .Cells(rowIndex + (CountRow + 3), 3)).BorderAround()
+                    .Range(.Cells(rowIndex, 2), .Cells(rowIndex + (CountRow + 3), 3)).EntireColumn.AutoFit()
+
+                    CountRow += 6
+
+                    rowIndex += CountRow
+
                 End If
             Next
         End With
-        '  FileLocationExcel = FileLocationExcel.Replace(".xlsx", ".pdf")
-        ' Const xlQualityStandard As Integer = 0
-        'sheet.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, FileLocationExcel, xlQualityStandard, True, False, Type.Missing, Type.Missing, True, Type.Missing)
-
 
         excel_app.Interactive = True
         excel_app.ActiveWindow.Activate()
-
-        'workbook.Close(True, Type.Missing, Type.Missing)
     End Sub
     Protected Sub MutuGizi()
         FileLocationExcel = Application.StartupPath + "\template\TemplateGizi.xlsm"
