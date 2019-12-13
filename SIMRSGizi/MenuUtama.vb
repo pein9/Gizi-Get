@@ -737,12 +737,10 @@ Public Class MenuUtama
     End Sub
 #Region "Dependencies"
     Public Sub SQLDependencies()
-        'Dim commandDeptEmp As MySqlCommand = New MySqlCommand("SELECT t_permintaan.KDPERMINTAAN FROM t_permintaan", connection)
         connectionDevart.LocalFailover = True
         connectionDevart.Open()
         Dim cmd As MySqlCommand = New MySqlCommand("SELECT t_permintaan.KDPERMINTAAN FROM t_permintaan", connectionDevart)
         Dim depend As MySqlDependency = New MySqlDependency(cmd, 100)
-        'depend.OnChange += New Devart.Data.MySql.OnChangeEventHandler(AddressOf depend_OnChange)
         AddHandler depend.OnChange, New OnChangeEventHandler(AddressOf dependency_OnChange)
         MySqlDependency.Start(connectionDevart)
     End Sub
@@ -752,7 +750,7 @@ Public Class MenuUtama
         btnMenu4.Number = CountNotify
         CreateTextIcon(CountNotify)
         niPopupStatus.BalloonTipText = "Ada " & CountNotify & " permintaan baru untuk di lihat."
-        niPopupStatus.BalloonTipTitle = niPopupStatus.Text ' & batteryCharge.ToString() & "% " & status.PowerLineStatus.ToString()
+        niPopupStatus.BalloonTipTitle = niPopupStatus.Text
         niPopupStatus.ShowBalloonTip(100)
     End Sub
     Public Sub StopDependent()
