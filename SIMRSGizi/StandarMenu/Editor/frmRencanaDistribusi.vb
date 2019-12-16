@@ -11,12 +11,15 @@ Public Class frmRencanaDistribusi
 
     Protected dtPermintaanRencana As DataTable
     Protected bsPermintaanRencana As New BindingSource
+    Protected bsPermintaanMenu As New BindingSource
 
     Protected rencana As New RencanaDistribusi
     Protected jajan As New Snack
 
     Dim MintaMenu As New PermintaanMenu
     Dim dtPermintaanMenu As DataTable
+
+    Dim Err As New Pein.BaseExceptionsHandler
 
     ' Private snack As New Pein.snack
     Public Sub New()
@@ -27,6 +30,8 @@ Public Class frmRencanaDistribusi
         ' Add any initialization after the InitializeComponent() call.
         HeaderChoice = New DataGridViewCheckBoxHeaderCell
         dgvRencanaMenu.Columns(0).HeaderCell = HeaderChoice
+
+        CreateUnboundButtonColumn(dgvPermintaanMenu)
     End Sub
     Private Sub EnableVSRenderer(ByVal version As VisualStudioToolStripExtender.VsVersion, ByVal theme As ThemeBase)
         vsRender.SetStyle(StatusStrip1, version, theme)
@@ -38,30 +43,30 @@ Public Class frmRencanaDistribusi
         WarnaIMT()
 
         dgvRencanaMenu.AutoGenerateColumns = False
+
         cboSnack.DisplayMember = "SNACK"
         cboSnack.ValueMember = "KDSNACK"
         cboSnack.DataSource = jajan.DataSnack
 
-
         dtPermintaanRencana = minta.DataPerSiklus(kodeWaktu)
-
         bsPermintaanRencana.DataSource = dtPermintaanRencana
         bsPermintaanRencana.Sort = "nmMakanan"
-
         dgvRencanaMenu.DataSource = bsPermintaanRencana
-
         dgvRencanaMenu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
 
         lblRencanaDistribusi.Text = FindMaxPlusDatatable(rencana.DataNoRencanaDistribusi, "KDRENCANADISTRIBUSI", "RD", 5)
 
-
         dtPermintaanMenu = MintaMenu.DataPermintaanDiet(Me.lblKdPermintaan.Text)
-        dgvPermintaanMenu.DataSource = dtPermintaanMenu
-
+        bsPermintaanMenu.DataSource = dtPermintaanMenu
+        dgvPermintaanMenu.DataSource = bsPermintaanMenu
         dgvPermintaanMenu.Columns("KDDIET").HeaderText = "KODE DIET"
         dgvPermintaanMenu.Columns("KETERANGANDIET").HeaderText = "NAMA DIET"
-        dgvPermintaanMenu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        With dgvPermintaanMenu
+            .Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        End With
         dgvPermintaanMenu.ReadOnly = True
+
         Me.lblNamaDiet.Text = dgvPermintaanMenu.Rows.Count.ToString & " jenis"
     End Sub
     Protected Sub WarnaIMT()
@@ -276,4 +281,76 @@ Public Class frmRencanaDistribusi
         CountNotify = 0
         MenuUtama.SQLDependencies()
     End Sub
+
+#Region "Datagridview Permintaan Button"
+    Protected Sub UbahDataDietMenu()
+        Dim f As New frmPerubahan
+
+        Dim MenuDietRow As DataRow = CType(bsPermintaanMenu.Current, DataRowView).Row
+        ' f.lblNoPermintaan.Text = lblKdPermintaan.Text
+        f.txtKode.Text = MenuDietRow.Field(Of String)("KDDIET")
+        f.cboNama.Text = MenuDietRow.Field(Of String)("KETERANGANDIET")
+        Try
+            If f.ShowDialog = DialogResult.OK Then
+
+                MenuDietRow.SetField(Of String)("KDDIET", f.txtKode.Text)
+                MenuDietRow.SetField(Of String)("KETERANGANDIET", f.cboNama.Text)
+                '  MenuDietRow.SetField(Of String)("kdPermintaan", f.lblNoPermintaan.Text)
+
+                '  If MintaMenu.UpdatePermintaanMenu(bsPermintaanMenu.CurrentRow) Then
+                'bsPermintaanMenu.DataTable.AcceptChanges()
+                'Else
+                ' Not Err.IsSuccessFul Then
+                MsgBox($"Update Data Permintaan Menu Gagal: {Err.LastExceptionMessage}", "Fatal Error")
+                'End If
+
+                'End If
+            Else
+                bsPermintaanMenu.CancelEdit()
+            End If
+        Finally
+            f.Dispose()
+        End Try
+    End Sub
+    Sub ShowNameFromButton(ByVal GridView As DataGridView, ByVal e As DataGridViewCellEventArgs)
+        If DirectCast(GridView.Item("Details", e.RowIndex), DataGridViewDisableButtonCell).Enabled Then
+            UbahDataDietMenu()
+        End If
+    End Sub
+    Private Sub CreateUnboundButtonColumn(ByVal sender As DataGridView)
+
+        Dim ColumnCancel As New DataGridViewDisableButtonColumn
+
+        With ColumnCancel
+            .HeaderText = "Editor"
+            .Name = "Details"
+            .Text = "Ubah"
+            .Width = 50
+            .UseColumnTextForButtonValue = True
+        End With
+        sender.Columns.Insert(0, ColumnCancel)
+
+
+    End Sub
+    Private Sub dgvPermintaanMenu_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvPermintaanMenu.CellContentClick
+        If CountNotify <> 0 Then
+            CountNotify = 0
+            MenuUtama.btnMenu4.Number = Nothing
+            MenuUtama.niPopupStatus.Icon = My.Resources.Nutri2
+        End If
+
+        If IsHeaderButtonCell(dgvPermintaanMenu, e) Then
+            ShowNameFromButton(dgvPermintaanMenu, e)
+        End If
+    End Sub
+    Private Sub dgvPermintaanMenu_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvPermintaanMenu.CellClick
+        dgvPermintaanMenu.CurrentCell.ErrorText = Nothing
+        dgvPermintaanMenu.CurrentCell.Style.ForeColor = Color.Black
+        dgvPermintaanMenu.CurrentCell.Style.Font = New Font(dgvPermintaanMenu.DefaultCellStyle.Font, FontStyle.Regular)
+    End Sub
+    <System.Diagnostics.DebuggerStepThrough()>
+    Function IsHeaderButtonCell(ByVal GridView As DataGridView, ByVal e As DataGridViewCellEventArgs) As Boolean
+        Return TypeOf GridView.Columns(e.ColumnIndex) Is DataGridViewButtonColumn AndAlso Not e.RowIndex = -1
+    End Function
+#End Region
 End Class

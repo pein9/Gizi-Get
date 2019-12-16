@@ -295,6 +295,10 @@
     <Compile Include="StandarMenu\Editor\frmDistribusi.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="StandarMenu\Editor\frmPerubahan.Designer.vb" />
+    <Compile Include="StandarMenu\Editor\frmPerubahan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="StandarMenu\Editor\frmRencanaDistribusi.Designer.vb">
       <DependentUpon>frmRencanaDistribusi.vb</DependentUpon>
     </Compile>
@@ -497,6 +501,7 @@
     <EmbeddedResource Include="StandarMenu\Editor\frmDistribusi.resx">
       <DependentUpon>frmDistribusi.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StandarMenu\Editor\frmPerubahan.resx" />
     <EmbeddedResource Include="StandarMenu\Editor\frmRencanaDistribusi.resx">
       <DependentUpon>frmRencanaDistribusi.vb</DependentUpon>
     </EmbeddedResource>
